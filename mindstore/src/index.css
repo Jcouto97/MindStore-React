@@ -1,3 +1,9 @@
+/* fonts usadas */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Prata&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,600;6..96,700&display=swap");
+
 /* todas as widths que adicionarmos vao ficar contidas dentro da 
 box, + previsivel */
 
@@ -5,4 +11,17 @@ box, + previsivel */
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+/* para nao aparecer roxo qd link visitado */
+a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+/* dar reset a margem e padding no body inteiro */
+body {
+  background-color: #f3f1f2;
+  margin: 0;
+  padding: 0;
 }

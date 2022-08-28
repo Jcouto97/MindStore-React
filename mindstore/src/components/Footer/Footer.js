@@ -7,12 +7,12 @@ function Footer() {
         <footer className="footer-container">
             <div className="footer-content">
                 <div className="footer-logo">MindStore</div>
+                <div className="footer-year">
+                    © 2022 All Rights Reserved
+                </div>
                 <Link to="/contacts" className="footer-contacts">
                     Contacts
                 </Link>
-                <div className="footer-year">
-                    © 2022. All Rights Reserved.
-                </div>
             </div>
         </footer>
     )

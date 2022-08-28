@@ -4,27 +4,27 @@ import "./header.css"
 
 
 function Header() {
-  return (
-    <header className='header-container'>
-        <nav className='header-nav'>
-            <Link to='/' className='header-logo'>
-                MindStore
-            </Link>
+    return (
+        <header className='header-container'>
+            <nav className='header-nav'>
+                <Link to='/' className='header-logo'>
+                    Mind<span className='header-bold'>Store</span>
+                </Link>
 
-            <div className='header-menu'>
-                <Link to='/productspage' className='header-anchor'>
-                    Products
-                </Link>
-                <Link to='/login' className='header-anchor'>
-                    Login
-                </Link>
-                <Link to='/register' className='header-anchor'>
-                    Register
-                </Link>
-            </div>
-        </nav>
-    </header>
-  )
+                <div className='header-menu'>
+                    <Link to='/productspage' className='header-anchor'>
+                        Products
+                    </Link>
+                    <Link to='/login' className='header-anchor'>
+                        Login
+                    </Link>
+                    <Link to='/register' className='header-anchor'>
+                        Register
+                    </Link>
+                </div>
+            </nav>
+        </header>
+    )
 }
 
 export default Header

@@ -1,8 +1,14 @@
 import React from 'react'
+import Header from "../../components/Header/Header"
+import Footer from "../../components/Footer/Footer"
 
 function Login() {
   return (
-    <div>Login</div>
+    <>
+      <Header />
+      <div>Login</div>
+      <Footer />
+    </>
   )
 }
 
