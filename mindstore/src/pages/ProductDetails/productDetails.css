@@ -1,8 +1,8 @@
 .product-detail-container {
     display: flex;
     gap: 70px;
-
     margin: 70px;
+    /* meter height so para o ecra */
 }
 
 .product-detail-image {

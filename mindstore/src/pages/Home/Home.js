@@ -1,22 +1,36 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer"
 import { Link } from "react-router-dom"
 import heroImage from "../../assets/sweater.jpg"
-import productImg from "../../assets/jacket.jpg"
 import bannerImg from "../../assets/banner.jpg"
+import Product from "../../components/Product/Product"
 import "./home.css"
 
 function Home() {
+    const [allProducts, setAllProducts] = useState([])
 
+    useEffect(() => {
+        async function fetchThreeProducts() {
+            const response = await fetch('api/v1/users/products?direction=ASC&field=title&page=1&pagesize=3')
+            const json = await response.json();
+            setAllProducts(json);
+        }
+        fetchThreeProducts()
+    }, [])
+
+    const productArray = allProducts.map((product, index) => {
+        return (
+            <Link to={`/product/${product.id}`} key={index}>
+                <Product product={product} />
+                {/* FALTA POR AQUI DIVS PARA ESTILAR */}
+            </Link>
+        )
+    })
 
     return (
         <>
-        {/* para apagar */}
             <Header />
-            <Link to="/product" >
-                        Product
-                    </Link>
 
             <div className="home-hero">
                 <div className="hero-body">
@@ -33,9 +47,7 @@ function Home() {
             </div>
             <div className='home-products'>
                 <div className="product-image-container">
-                    <img className='product-image' src={productImg} />
-                    <img className='product-image' src={productImg} />
-                    <img className='product-image' src={productImg} />
+                    {productArray}
                 </div>
             </div>
             <div className='banner-container'>
