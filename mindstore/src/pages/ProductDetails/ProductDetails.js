@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react'
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import { Link } from "react-router-dom"
+import arrowLeft from "../../assets/arrow-left.png"
+import Rating from "../../components/Rating/Rating"
+import QuantityButton from "../../components/QuantityButton/QuantityButton"
+import "./productDetails.css"
 
 
 function ProductDetails() {
@@ -10,10 +14,12 @@ function ProductDetails() {
     const [product, setProduct] = useState({});
     //como rating é outro objeto tenho que guardar em state para poder desconstruir. PORQUE?
     const [productRating, setProductRating] = useState({});
+    //state que vem do quantity button para ser usado no cart + tarde
+    const [productsToadd, setProductToAdd] = useState();
 
     useEffect(() => {
         async function fetchById() {
-            const response = await fetch(`/api/v1/users/products/4`);
+            const response = await fetch(`/api/v1/users/products/35`);
             const json = await response.json(); //problema aqui?
             console.log(json)
             setProduct(json);
@@ -21,21 +27,44 @@ function ProductDetails() {
         }
         fetchById();
     }, []);
+    
+    //quantity vem da component button quantity
+    function handleAddToUserCart(quantity){
+        console.log(quantity)
+        const newValue = quantity;
+        setProductToAdd(newValue);
+    }
+
+    //Fazer aqui fetch para mandar para o cart + tarde
+    function addToCart(){
+        console.log("add to cart here")
+    }
 
     return (
         <>
             <Header />
-            <img src={product.image} />
-            <Link to="/productspage">
-                Back to Product List
-            </Link>
-            <div>{product.category}</div>
-            <div>{product.title}</div>
-            <div>estrelas aqui</div>
-            <div>{productRating.rate} ({productRating.count})</div>
-            <div>{product.price}</div>
-            <div>{product.description}</div>
-
+            <div className="product-detail-container">
+                <img className="product-detail-image" src={product.image} />
+                <div className="product-detail-content">
+                    <Link className="product-detail-back" to="/productspage">
+                      <img src={arrowLeft} />
+                      <span>&nbsp;Back to Product List</span>
+                    </Link>
+                    <p className="product-detail-category">{(product.category)}</p>
+                    <h1 className='product-detail-title'>{product.title}</h1>
+                    <Rating className="product-detail-rating" productRating={productRating} />
+                    <p>{product.stock}</p>
+                    <p className="product-detail-price">{product.price}</p>
+                    <p className="product-detail-description">{product.description}</p>
+                    <div className="product-detail-cart">
+                        <QuantityButton stock={product.stock} handleAddToUserCart={handleAddToUserCart}/>
+                        {/* falta aqui funçoes handles para adicionar ao cart */}
+                        <button className="hero-body-button" onClick={addToCart}>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
             <Footer />
         </>
     )
