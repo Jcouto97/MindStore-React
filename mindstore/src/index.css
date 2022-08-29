@@ -14,9 +14,9 @@ box, + previsivel */
 }
 
 /* para nao aparecer roxo qd link visitado */
-a:visited {
+a {
   text-decoration: none;
-  color: black;
+  color: inherit;
 }
 
 /* dar reset a margem e padding no body inteiro */

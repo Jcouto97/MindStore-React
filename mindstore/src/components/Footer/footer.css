@@ -1,7 +1,7 @@
 .footer-container {
   padding: 10px 40px;
   background-color: white;
-  position: absolute;
+  /* position: absolute; */
   left: 0;
   right: 0;
   bottom: 0;
@@ -32,3 +32,4 @@
 .footer-logo {
   font-size: 18px;
 }
+

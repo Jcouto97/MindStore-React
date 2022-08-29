@@ -1,0 +1,101 @@
+.home-hero {
+  margin: 84px 40px;
+  padding: 40px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.hero-body {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-left: 80px;
+}
+
+.hero-body-title {
+  font-family: "Prata", serif;
+  font-size: 64px;
+  font-weight: normal;
+}
+
+.hero-body-description {
+  font-family: "Prata", serif;
+  font-size: 20px;
+  margin-bottom: 80px;
+}
+
+.hero-body-button {
+  border: none;
+  background-color: #d4937f;
+  color: white;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  padding: 16px 0;
+  width: 220px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.hero-body-button:hover {
+  box-shadow: -1px 6px 10px 0 rgba(120, 60, 20, 0.15);
+}
+
+.home-products {
+  margin: 80px;
+}
+
+.product-image-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.product-image {
+  max-height: 400px;
+}
+
+.banner-container {
+  margin: 80px 400px 60px;
+  display: flex;
+  background-color: white;
+  padding: 40px;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.banner-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.banner-title {
+  font-family: "Prata", serif;
+  font-size: 40px;
+  font-weight: normal;
+}
+
+/* terminar para todos */
+
+@media (max-width: 906px) {
+  .home-hero {
+    flex-direction: column-reverse;
+  }
+  
+  .hero-body-title {
+    width: 100%;
+    font-size: 28px;
+  }
+
+  .hero-body-description{
+    width: 100%;
+  }
+}
