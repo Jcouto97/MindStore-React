@@ -22,9 +22,9 @@ function Login() {
   const password = useRef()
 
   async function handleSubmit(event) {
-    console.log(email.current.value)
-    console.log(password.current.value)
-
+    /*    console.log(email.current.value)
+       console.log(password.current.value)
+    */
     event.preventDefault();
 
     const request = {
@@ -101,24 +101,26 @@ function Login() {
     <>
       <Header />
       <div className="credentials-container">
-        <p className="credentials-title">Login To your Account</p>
-        <form onSubmit={handleSubmit} className='credentials-form' >
+        <div className="credentials-subcontainer">
+          <p className="credentials-title">Login To Your Account</p>
+          <form onSubmit={handleSubmit} className='credentials-form' >
             <label htmlFor='email' >
-              <input id="table" type="text" ref={email} placeholder="Email" required />
+              <input className='table' type="text" ref={email} placeholder="Email" required />
             </label>
             <label htmlFor='password'>
-              <input id="table" type="password" ref={password} placeholder="Password" required />
+              <input className='table' type="password" ref={password} placeholder="Password" required />
             </label>
-          <button className='credentials-button' type='submit'>Login</button>
-        </form>
-        {/* permutar entre mensagem vermelha ou verder */}
-        {/* fazer set timeout 1 seg e passar para login page caso sucesso */}
-        <p className={message === "Login successful!" ? "success-message" : "error-message"}> {message}</p>
-        {/* {message === "Login successful!" ? {redirect} : "null"} */}
-        <p className="credentials-message">
-          Don't have an account?
-          <Link to="/register" className="credentials-redirect"> Register here</Link>
-        </p>
+            <button className='credentials-button' type='submit'>Login</button>
+          </form>
+          {/* permutar entre mensagem vermelha ou verder */}
+          {/* fazer set timeout 1 seg e passar para login page caso sucesso */}
+          <p className={message === "Login successful!" ? "success-message" : "error-message"}> {message}</p>
+          {/* {message === "Login successful!" ? {redirect} : "null"} */}
+          <p className="credentials-message">
+            Don't have an account?
+            <Link to="/register" className="credentials-redirect"> Register here</Link>
+          </p>
+        </div>
       </div>
       <Footer />
     </>

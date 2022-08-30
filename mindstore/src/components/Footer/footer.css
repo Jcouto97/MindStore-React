@@ -7,6 +7,15 @@
   bottom: 0;
 }
 
+.absolute-footer-container {
+  padding: 10px 40px;
+  background-color: white;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 .footer-content {
   display: flex;
   height: 40px;
