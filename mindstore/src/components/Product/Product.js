@@ -12,15 +12,17 @@ function Product(props) {
   const navigate = useNavigate();
 
   return (
-    <div className="product-container" onClick={() => navigate(`/product/${product.id}`)}>
-      <img src={product.image} className="product-image" />
-      <div className="product-rating">
-        <p>{Math.round((product.rating.rate) * 10) / 10}</p>
-        <img className='product-star' src={starFull} />
-      </div>
-      <div className="product-content">
-        <p className="product-title">{product.title}</p>
-        <p className="product-price">{product.price}$</p>
+    <div className='productspage-product'>
+      <div className="product-container" onClick={() => navigate(`/product/${product.id}`)}>
+        <img src={product.image} className="product-image" />
+        <div className="product-rating">
+          <p>{Math.round((product.rating.rate) * 10) / 10}</p>
+          <img className='product-star' src={starFull} />
+        </div>
+        <div className="product-content">
+          <p className="product-title">{product.title}</p>
+          <p className="product-price">{product.price}$</p>
+        </div>
       </div>
     </div>
   )
