@@ -10,15 +10,15 @@ import "./productDetails.css"
 
 function ProductDetails() {
     const { id } = useParams();
-    // const { id } = useParams(); VEM DE ONDE? N DEVIA SER PROP?
+    // o react vai procurar no router product:id no url e associa
 
     const [product, setProduct] = useState({});
     //como rating é outro objeto tenho que guardar em state para poder desconstruir. PORQUE?
 
     const [productRating, setProductRating] = useState({});
     //state que vem do quantity button para ser usado no cart + tarde
-    
-    const [productsToadd, setProductToAdd] = useState();
+
+    const [productsToAdd, setProductToAdd] = useState(1);
 
     useEffect(() => {
         async function fetchById() {
@@ -30,16 +30,14 @@ function ProductDetails() {
         }
         fetchById();
     }, []);
-    
-    //quantity vem da component button quantity
-    function handleAddToUserCart(quantity){
-        console.log(quantity)
-        const newValue = quantity;
-        setProductToAdd(newValue);
+
+    //products to add vem da component button quantity
+    function handleAddToUserCart(productsToAdd, num) {
+        setProductToAdd(productsToAdd + num);
     }
 
     //Fazer aqui fetch para mandar para o cart + tarde
-    function addToCart(){
+    function addToCart() {
         console.log("add to cart here")
     }
 
@@ -50,8 +48,8 @@ function ProductDetails() {
                 <img className="product-detail-image" src={product.image} />
                 <div className="product-detail-content">
                     <Link className="product-detail-back" to="/productspage">
-                      <img src={arrowLeft} />
-                      <span>&nbsp;Back to Product List</span>
+                        <img src={arrowLeft} />
+                        <span>&nbsp;Back to Product List</span>
                     </Link>
                     <p className="product-detail-category">{(product.category)}</p>
                     <h1 className='product-detail-title'>{product.title}</h1>
@@ -60,7 +58,7 @@ function ProductDetails() {
                     <p className="product-detail-price">{product.price}</p>
                     <p className="product-detail-description">{product.description}</p>
                     <div className="product-detail-cart">
-                        <QuantityButton stock={product.stock} handleAddToUserCart={handleAddToUserCart}/>
+                        <QuantityButton productsToAdd={productsToAdd} stock={product.stock} handleAddToUserCart={handleAddToUserCart} />
                         {/* falta aqui funçoes handles para adicionar ao cart */}
                         <button className="hero-body-button" onClick={addToCart}>
                             Add to Cart

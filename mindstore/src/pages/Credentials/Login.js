@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react'
 import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer"
-import { Link, Navigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import "./credentials.css"
 
 /*
@@ -14,6 +14,8 @@ fazer pedido fetch post a api para logar com o token no authorization
 
 
 function Login() {
+
+  const navigate = useNavigate()
 
   const [token, setToken] = useState("")
   const [message, setMessage] = useState("")
@@ -58,43 +60,16 @@ function Login() {
     }
   }
 
-  //para redirecionar n consegui com set timeout?
+
   if (message === "Login successful!") {
-    return <Navigate to="/productspage" />
+    setTimeout(() => {
+      navigate("/productspage");
+    }, 2000);
   }
 
-  /*   function redirect(){
-    setTimeout(function () {
-      if (message === "Login successful!") {
-        return <Navigate to="/productspage" />
-      }
-    }, 5000)
-  } */
-
-
-  /* function redirect() {
-    if (message === "Login successful!") {
-      return <Navigate to="/productspage" />
-    }
-  }
-  
-  redirect() */
-  /* setTimeout(function () {
-    return redirect()
-  }, 5000) */
-
-  /* useEffect(() => {
-    const timeout = setTimeout(function () {
-      redirect()
-    }, 5000)
-  
-    return () => clearTimeout(timeout);
-  }, []); */
-
-
-  console.log(message)
-  console.log(token)
-  console.log(userId)
+  console.log(message);
+  console.log(token);
+  console.log(userId);
 
 
   return (

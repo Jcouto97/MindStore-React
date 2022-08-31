@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import starFull from "../../assets/star-full.png";
 import "./product.css"
 
@@ -7,8 +8,11 @@ import "./product.css"
 function Product(props) {
   const { product } = props;
 
+  //para qd clicar na component ir para o product details
+  const navigate = useNavigate();
+
   return (
-    <div className="product-container">
+    <div className="product-container" onClick={() => navigate(`/product/${product.id}`)}>
       <img src={product.image} className="product-image" />
       <div className="product-rating">
         <p>{Math.round((product.rating.rate) * 10) / 10}</p>
@@ -18,10 +22,6 @@ function Product(props) {
         <p className="product-title">{product.title}</p>
         <p className="product-price">{product.price}$</p>
       </div>
-
-
-
-
     </div>
   )
 }
