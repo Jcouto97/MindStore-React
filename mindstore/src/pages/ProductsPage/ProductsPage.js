@@ -18,16 +18,15 @@ function ProductsPage() {
   useEffect(() => {
     async function fetchProducts() {
       console.log(page)
-      const response = await fetch(`api/v1/users/products${link}${direction}&page=${page}&pagesize=10`);
+      const response = await fetch(`api/v1/users/products${link}${direction}&page=${page}&pagesize=${productsPerPage}`);
       const json = await response.json();
-      console.log(json)
       setProducts(json)
     }
     fetchProducts();
     //estes para sempre que trocarem re render da pagina
-  }, [direction, link, page])
+  }, [direction, link, page, productsPerPage])
 
-  //paginaçao
+  //ir buscar o nr de produtos para a paginaçao
   useEffect(() => {
     async function fetchNumPages() {
       const response = await fetch(`api/v1/users/products${link}ASC&page=1&pagesize=100`);
@@ -38,7 +37,7 @@ function ProductsPage() {
       setNumberOfPages(Array.from(Array(numPages)))
     }
     fetchNumPages();
-  }, [link])
+  }, [link, productsPerPage])
 
   const productArray = products.map(product => {
     {/* o link para o product esta no componente product mesmo */ }
@@ -54,13 +53,19 @@ function ProductsPage() {
 
   //que é enviada para os components
   function changeLink(link) {
-    setLink(link)
+    setLink(link);
   }
+
+  //botao para diminuir e aumentar produtos por pagina
+  function changeNrProducts(productsPerPage, num) {
+    setProductsPerPage(productsPerPage + num);
+  }
+
 
   return (
     <>
       <Header />
-      <Sidebar handleSort={handleSort} changeLink={changeLink} />
+      <Sidebar handleSort={handleSort} changeLink={changeLink} changeNrProducts={changeNrProducts} productsPerPage={productsPerPage} />
       <div className='producstpage-container' >{productArray}</div>
       <div>
         {/*  a cada butao tenho que por onclick para mudar a pagina */}
