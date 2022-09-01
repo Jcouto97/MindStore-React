@@ -78,7 +78,7 @@ function ProductsPage() {
     <>
       <Header />
       <SearchBar handleSearch={handleSearch} />
-      <Sidebar handleSort={handleSort} changeLink={changeLink} changeNrProducts={changeNrProducts} productsPerPage={productsPerPage} />
+      <Sidebar className="sidebar" handleSort={handleSort} changeLink={changeLink} changeNrProducts={changeNrProducts} productsPerPage={productsPerPage} />
       <div className='producstpage-container' >{productArray}</div>
       <div>
         {/*  a cada butao tenho que por onclick para mudar a pagina */}

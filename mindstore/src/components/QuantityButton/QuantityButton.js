@@ -12,7 +12,6 @@ function QuantityButton(props) {
   const { handleAddToUserCart } = props
 
   function handleDecrement() {
-    console.log("decrementing")
     //pq ja foi inicializado a 1 no state
     //num é o que esta depois da ,
     if (productsToAdd !== 1) handleAddToUserCart(productsToAdd, -1);

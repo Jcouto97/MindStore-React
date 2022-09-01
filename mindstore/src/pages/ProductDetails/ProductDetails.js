@@ -24,7 +24,6 @@ function ProductDetails() {
         async function fetchById() {
             const response = await fetch(`/api/v1/users/products/${id}`);
             const json = await response.json(); //problema aqui?
-            console.log(json)
             setProduct(json);
             setProductRating(json.rating);
         }
@@ -36,10 +35,30 @@ function ProductDetails() {
         setProductToAdd(productsToAdd + num);
     }
 
-    //Fazer aqui fetch para mandar para o cart + tarde
-    function addToCart() {
-        console.log("add to cart here")
+    /*
+   products to add é a variavel que vem de cada um, tenho que fazer um pedido fetch 
+   ao endpoint que da add ao cart, preciso do id do PRODUCT e USER, products to add sao quantos vou fazer(loop?)
+    */
+
+    async function addToCart() {
+        const userId = localStorage.getItem("userId");
+        const fetchedToken = localStorage.getItem("token");
+        console.log(fetchedToken);
+
+        const productId = product.id;
+
+        const request = {
+            method: "PATCH",
+            headers: { "Content.Type": "application/JSON", "Authorization": fetchedToken },
+        }
+
+        for(let i=0; i<productsToAdd; i++){
+            const response = await fetch(`/api/v1/users/addtocart?userid=${userId}&productid=${productId}`, request);
+            const data = await response.json();
+            console.log("product added to cart ->", data)
+        }
     }
+
 
     return (
         <>
