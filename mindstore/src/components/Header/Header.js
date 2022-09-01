@@ -12,6 +12,7 @@ function Header() {
 
     function handleLogout() {
         localStorage.removeItem('token');
+        localStorage.removeItem('userId');
         navigate('/');
     }
 

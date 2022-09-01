@@ -2,8 +2,9 @@ import React, { useEffect, useRef, useState } from 'react'
 import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer"
 import Product from "../../components/Product/Product"
-import "./productsPage.css"
 import Sidebar from '../../components/Sidebar/Sidebar'
+import SearchBar from '../../components/SearchBar/SearchBar'
+import "./productsPage.css"
 
 function ProductsPage() {
 
@@ -14,10 +15,10 @@ function ProductsPage() {
   const [page, setPage] = useState(1)
   const [numberOfPages, setNumberOfPages] = useState([])
 
-
   useEffect(() => {
+/*     console.log(localStorage.getItem("token"));
+    console.log(localStorage.getItem("userId")); */
     async function fetchProducts() {
-      console.log(page)
       const response = await fetch(`api/v1/users/products${link}${direction}&page=${page}&pagesize=${productsPerPage}`);
       const json = await response.json();
       setProducts(json)
@@ -40,6 +41,7 @@ function ProductsPage() {
   }, [link, productsPerPage])
 
   const productArray = products.map(product => {
+    //ONDE DAMOS SET AOS PRODUTOS?
     {/* o link para o product esta no componente product mesmo */ }
     return (
       <Product key={product.id} product={product} />
@@ -61,16 +63,26 @@ function ProductsPage() {
     setProductsPerPage(productsPerPage + num);
   }
 
+  //search
+
+  async function handleSearch(search) {
+    const response = await fetch("api/v1/users/products?direction=DESC&field=title&page=1&pagesize=40")
+    const data = await response.json();
+
+    const dataArray = data.filter(product => product.title.toLowerCase().includes((search.current.value).toLowerCase()))
+    setProducts(dataArray);
+  }
+
 
   return (
     <>
       <Header />
+      <SearchBar handleSearch={handleSearch} />
       <Sidebar handleSort={handleSort} changeLink={changeLink} changeNrProducts={changeNrProducts} productsPerPage={productsPerPage} />
       <div className='producstpage-container' >{productArray}</div>
       <div>
         {/*  a cada butao tenho que por onclick para mudar a pagina */}
         {numberOfPages.map((page, index) => <button key={index} onClick={() => {
-          console.log(index + 1)
           setPage(index + 1)
         }} > {index + 1} </button>)}
       </div>

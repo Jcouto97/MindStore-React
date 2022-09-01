@@ -17,9 +17,7 @@ function Login() {
 
   const navigate = useNavigate()
 
-  const [token, setToken] = useState("")
   const [message, setMessage] = useState("")
-  const [userId, setUserId] = useState("")
   const email = useRef()
   const password = useRef()
 
@@ -44,16 +42,15 @@ function Login() {
       if (response.status === 200) {
         setMessage("Login successful!")
         //este get authorization e id nao estam no json? 
-        setToken(response.headers.get("Authorization"))
-        setUserId(response.headers.get("Id"))
+        const givenToken = response.headers.get("Authorization");
+        const givenId = response.headers.get("Id");
 
         //atribuir a local storage, dava com use context?
-        localStorage.setItem("token", token)
-        localStorage.setItem("userId", userId)
+        localStorage.setItem("token", givenToken)
+        localStorage.setItem("userId", givenId)
 
       } else {
         setMessage("Login failed!")
-        setToken(null)
       }
     } catch (err) {
       console.log(err)
@@ -62,15 +59,12 @@ function Login() {
 
 
   if (message === "Login successful!") {
+    /*     console.log(localStorage.getItem("token"));
+        console.log(localStorage.getItem("userId")); */
     setTimeout(() => {
       navigate("/productspage");
     }, 2000);
   }
-
-  console.log(message);
-  console.log(token);
-  console.log(userId);
-
 
   return (
     <>

@@ -10,7 +10,9 @@ function Footer() {
     //assim corre sempre que o footer é chamado
     useEffect(() => {
         if(location.pathname === "/login" ||
-        location.pathname === "/register"){
+        location.pathname === "/register" ||
+        location.pathname === "/contacts" ||
+        location.pathname === "/profile"){
             setIsFooterAbsolute(true)
         }
     }, [])
