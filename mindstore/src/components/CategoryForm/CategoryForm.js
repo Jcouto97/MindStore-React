@@ -5,6 +5,8 @@ function CategoryForm(props) {
 
     return (
         <form>
+        <p>CATEGORY FILTER</p>
+        <div className='sort-input' >
             <label htmlFor='women' >
                 <input type="radio" name="category" value="women's+clothing" id="women" onChange={handleCategory} />
                 Women's clothing
@@ -21,6 +23,7 @@ function CategoryForm(props) {
                 <input type="radio" name="category" value="electronics" id="electronics" onChange={handleCategory} />
                 Electronics
             </label>
+        </div>
         </form>
     )
 }

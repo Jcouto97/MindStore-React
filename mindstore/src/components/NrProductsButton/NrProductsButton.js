@@ -14,10 +14,13 @@ function NrProductsButton(props) {
     }
 
     return (
+        <div> PRODUCTS PER PAGE 
+        <p></p>
         <div className='quantity-button'>
             <button className='quantity-button-decrement' onClick={handleDecrement}>-</button>
             <p className='quantity-button-number'>{productsPerPage}</p>
             <button className='quantity-button-increment' onClick={handleIncrement}>+</button>
+        </div>
         </div>
     )
 }

@@ -46,3 +46,25 @@
   background-color: transparent;
   border-radius: 4px;
 }
+
+/* nos links do header a animação */
+
+.header-anchor {
+  font-size: 100%;
+  text-decoration: none;
+  background: linear-gradient(#d4937f, white) bottom / 0 0.1em no-repeat;
+  transition: 0.2s background-size;
+}
+
+.header-anchor:hover {
+  background-size: 100% 0.1em;
+}
+
+/* Variations */
+.header-anchor.left {
+  background-position: left bottom;
+}
+
+.header-anchor.right {
+  background-position: right bottom;
+}

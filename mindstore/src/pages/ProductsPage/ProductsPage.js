@@ -16,8 +16,8 @@ function ProductsPage() {
   const [numberOfPages, setNumberOfPages] = useState([])
 
   useEffect(() => {
-/*     console.log(localStorage.getItem("token"));
-    console.log(localStorage.getItem("userId")); */
+    /*     console.log(localStorage.getItem("token"));
+        console.log(localStorage.getItem("userId")); */
     async function fetchProducts() {
       const response = await fetch(`api/v1/users/products${link}${direction}&page=${page}&pagesize=${productsPerPage}`);
       const json = await response.json();
@@ -77,14 +77,20 @@ function ProductsPage() {
   return (
     <>
       <Header />
-      <SearchBar handleSearch={handleSearch} />
-      <Sidebar className="sidebar" handleSort={handleSort} changeLink={changeLink} changeNrProducts={changeNrProducts} productsPerPage={productsPerPage} />
-      <div className='producstpage-container' >{productArray}</div>
-      <div>
-        {/*  a cada butao tenho que por onclick para mudar a pagina */}
-        {numberOfPages.map((page, index) => <button key={index} onClick={() => {
-          setPage(index + 1)
-        }} > {index + 1} </button>)}
+      <div className="products-page-container">
+        <div className="products-page-search-sidebar">
+        <SearchBar handleSearch={handleSearch} />
+        <Sidebar className="sidebar" handleSort={handleSort} changeLink={changeLink} changeNrProducts={changeNrProducts} productsPerPage={productsPerPage} />
+        </div>
+        <div className="products-grids-pagination">
+          <div className='producstpage-container' >{productArray}</div>
+          <div className='products-pagination' >
+            {/*  a cada butao tenho que por onclick para mudar a pagina */}
+            {numberOfPages.map((page, index) => <button key={index} onClick={() => {
+              setPage(index + 1)
+            }} > {index + 1} </button>)}
+          </div>
+        </div>
       </div>
       <Footer />
     </>

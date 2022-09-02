@@ -1,18 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
+import { CartContext } from '../../components/Contexts/CartContext' //USECONTEXT
 import Footer from '../../components/Footer/Footer'
 import Header from '../../components/Header/Header'
 import CartProduct from '../../components/CartProduct/CartProduct'
+import ProductDetails from '../ProductDetails/ProductDetails'
 
 function Cart() {
   const userId = localStorage.getItem('userId');
   const fetchedToken = localStorage.getItem('token');
-  const [cartProducts, setCartProducts] = useState([])
+  // const [cartProducts, setCartProducts] = useState([])
+  const { cartProducts, setCartProducts } = useContext(CartContext);
 
   /*
   fazer fetch ao endpoint que ve os produtos que estao no cart e outro para apagar produtos do cart?
   guardar todos em um state array, dar display ao array
   podemos ter um max de 10 artigos no cart, senao bloquear fetch e mostrar mensagem
   */
+
 
   useEffect(() => {
     const request = {
@@ -31,9 +35,9 @@ function Cart() {
 
   console.log(cartProducts)
 
-  const myCartArray = cartProducts.map(product => {
+  const myCartArray = cartProducts.map((product, index) => {
     return (
-      <CartProduct product={product} removeFromCart={removeFromCart} />
+      <CartProduct key={index} product={product} removeFromCart={removeFromCart} />
     )
   })
 
@@ -43,7 +47,7 @@ function Cart() {
       return pricesArray.reduce((curr, acc) => curr + acc);
     }
   }
-
+  //HELLO
   /*
   Fazer uma componente para cada produto que tem um botao que qaudno é clicado recebe prop de uma funçao daqui que
   faz um fetch para apagar o produto do cart

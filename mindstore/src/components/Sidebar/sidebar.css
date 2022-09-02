@@ -1,5 +1,14 @@
 .sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.search {
+  margin-top: 10px;
+  padding: 12px;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 10px;
+  width: 60%;
 }
