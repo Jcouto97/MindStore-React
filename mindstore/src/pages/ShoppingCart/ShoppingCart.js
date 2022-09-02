@@ -43,7 +43,7 @@ function Cart() {
       return pricesArray.reduce((curr, acc) => curr + acc);
     }
   }
-
+//HELLO
   /*
   Fazer uma componente para cada produto que tem um botao que qaudno é clicado recebe prop de uma funçao daqui que
   faz um fetch para apagar o produto do cart
