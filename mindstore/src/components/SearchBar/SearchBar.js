@@ -12,7 +12,7 @@ function SearchBar({ handleSearch }) {
 
     return (
         <label htmlFor="search">
-            <input type="text" name="search" placeholder="Search" onChange={searchProduct} ref={search} />
+            <input  className='search' type="text" name="search" placeholder="Search" onChange={searchProduct} ref={search} />
         </label>
     )
 }

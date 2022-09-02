@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import { Link, useParams } from "react-router-dom"
@@ -6,9 +6,11 @@ import arrowLeft from "../../assets/arrow-left.png"
 import Rating from "../../components/Rating/Rating"
 import QuantityButton from "../../components/QuantityButton/QuantityButton"
 import "./productDetails.css"
+import { CartContext } from '../../components/Contexts/CartContext'
 
 
 function ProductDetails() {
+    const { cartProducts } = useContext(CartContext); //VARIAVEL DO CONTEXT PARA BLOQUEAR CASO QUEIRA ADICIONAR + PRODUCTS NO CART MAX 10
     const { id } = useParams();
     // o react vai procurar no router product:id no url e associa
 
@@ -19,8 +21,12 @@ function ProductDetails() {
     //state que vem do quantity button para ser usado no cart + tarde
 
     const [productsToAdd, setProductToAdd] = useState(1);
+    const [isCartFull, setIsCartFull] = useState(false);
 
     useEffect(() => {
+        console.log(isCartFull
+            )
+        console.log(cartProducts.length) //CART PRODUCTS
         async function fetchById() {
             const response = await fetch(`/api/v1/users/products/${id}`);
             const json = await response.json(); //problema aqui?
@@ -40,7 +46,14 @@ function ProductDetails() {
    ao endpoint que da add ao cart, preciso do id do PRODUCT e USER, products to add sao quantos vou fazer(loop?)
     */
 
+
     async function addToCart() {
+        //variavel de context, caso esteja cheio
+        if (cartProducts.length >= 10) {
+            setIsCartFull(true);
+            return;
+        }
+
         const userId = localStorage.getItem("userId");
         const fetchedToken = localStorage.getItem("token");
         console.log(fetchedToken);
@@ -52,7 +65,7 @@ function ProductDetails() {
             headers: { "Content.Type": "application/JSON", "Authorization": fetchedToken },
         }
 
-        for(let i=0; i<productsToAdd; i++){
+        for (let i = 0; i < productsToAdd; i++) {
             const response = await fetch(`/api/v1/users/addtocart?userid=${userId}&productid=${productId}`, request);
             const data = await response.json();
             console.log("product added to cart ->", data)
@@ -83,6 +96,9 @@ function ProductDetails() {
                             Add to Cart
                         </button>
                     </div>
+                    <>
+                        {isCartFull && <div>Cart is full (max 10 items)</div>}
+                    </>
                 </div>
             </div>
             <Footer />
