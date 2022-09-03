@@ -45,7 +45,7 @@ function Login() {
         const givenToken = response.headers.get("Authorization");
         const givenId = response.headers.get("Id");
 
-        //atribuir a local storage, dava com use context?
+        //atribuir a local storage, dava com use context
         localStorage.setItem("token", givenToken)
         localStorage.setItem("userId", givenId)
 
@@ -57,10 +57,8 @@ function Login() {
     }
   }
 
-
+  //set timeout antes de navegar
   if (message === "Login successful!") {
-    /*     console.log(localStorage.getItem("token"));
-        console.log(localStorage.getItem("userId")); */
     setTimeout(() => {
       navigate("/productspage");
     }, 2000);

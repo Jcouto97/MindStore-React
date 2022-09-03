@@ -45,6 +45,7 @@
   border: solid 1px #d4937f;
   background-color: transparent;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 /* nos links do header a animação */

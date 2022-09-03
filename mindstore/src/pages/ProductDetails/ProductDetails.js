@@ -15,18 +15,18 @@ function ProductDetails() {
     // o react vai procurar no router product:id no url e associa
 
     const [product, setProduct] = useState({});
+
     //como rating é outro objeto tenho que guardar em state para poder desconstruir. PORQUE?
-
     const [productRating, setProductRating] = useState({});
-    //state que vem do quantity button para ser usado no cart + tarde
 
+    //state que vem do quantity button para ser usado no cart + tarde
     const [productsToAdd, setProductToAdd] = useState(1);
     const [isCartFull, setIsCartFull] = useState(false);
 
     useEffect(() => {
-        console.log(isCartFull
-            )
-        console.log(cartProducts.length) //CART PRODUCTS
+        /*  console.log(isCartFull
+             )
+         console.log(cartProducts.length) variavel do usecontext */
         async function fetchById() {
             const response = await fetch(`/api/v1/users/products/${id}`);
             const json = await response.json(); //problema aqui?
@@ -41,11 +41,6 @@ function ProductDetails() {
         setProductToAdd(productsToAdd + num);
     }
 
-    /*
-   products to add é a variavel que vem de cada um, tenho que fazer um pedido fetch 
-   ao endpoint que da add ao cart, preciso do id do PRODUCT e USER, products to add sao quantos vou fazer(loop?)
-    */
-
 
     async function addToCart() {
         //variavel de context, caso esteja cheio
@@ -56,7 +51,7 @@ function ProductDetails() {
 
         const userId = localStorage.getItem("userId");
         const fetchedToken = localStorage.getItem("token");
-        console.log(fetchedToken);
+        // console.log(fetchedToken);
 
         const productId = product.id;
 
@@ -86,7 +81,7 @@ function ProductDetails() {
                     <p className="product-detail-category">{(product.category)}</p>
                     <h1 className='product-detail-title'>{product.title}</h1>
                     <Rating className="product-detail-rating" productRating={productRating} />
-                    <p>Stock: {product.stock} (apagar)</p>
+                    <p>Stock: {product.stock} </p>
                     <p className="product-detail-price">{product.price}</p>
                     <p className="product-detail-description">{product.description}</p>
                     <div className="product-detail-cart">
@@ -97,6 +92,7 @@ function ProductDetails() {
                         </button>
                     </div>
                     <>
+                        {/* caso cart full manda esta mensagem */}
                         {isCartFull && <div>Cart is full (max 10 items)</div>}
                     </>
                 </div>

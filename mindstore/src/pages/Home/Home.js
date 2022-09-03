@@ -23,7 +23,7 @@ function Home() {
         return (
             <Link to={`/product/${product.id}`} key={index}>
                 <Product product={product} />
-                {/* FALTA POR AQUI DIVS PARA ESTILAR */}
+                {/* estilos no product*/}
             </Link>
         )
     })

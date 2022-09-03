@@ -8,8 +8,7 @@ se decrementar n pode ser - que 1
 */
 
 function QuantityButton(props) {
-  const { stock, productsToAdd } = props;
-  const { handleAddToUserCart } = props
+  const { stock, productsToAdd, handleAddToUserCart } = props;
 
   function handleDecrement() {
     //pq ja foi inicializado a 1 no state

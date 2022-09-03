@@ -11,7 +11,6 @@ function Footer() {
     useEffect(() => {
         if(location.pathname === "/login" ||
         location.pathname === "/register" ||
-        location.pathname === "/contacts" ||
         location.pathname === "/profile"){
             setIsFooterAbsolute(true)
         }

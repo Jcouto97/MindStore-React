@@ -4,6 +4,8 @@ import Footer from '../../components/Footer/Footer'
 import Header from '../../components/Header/Header'
 import CartProduct from '../../components/CartProduct/CartProduct'
 import ProductDetails from '../ProductDetails/ProductDetails'
+import arrowLeft from "../../assets/arrow-left.png"
+import { Link } from "react-router-dom"
 
 function Cart() {
   const userId = localStorage.getItem('userId');
@@ -47,15 +49,7 @@ function Cart() {
       return pricesArray.reduce((curr, acc) => curr + acc);
     }
   }
-  //HELLO
-  /*
-  Fazer uma componente para cada produto que tem um botao que qaudno é clicado recebe prop de uma funçao daqui que
-  faz um fetch para apagar o produto do cart
-  */
-
-  /*
-  fazer uma variavel que vai estar sempre a calcular o preço total de todos os produtos noc cart
-  */
+ 
 
   async function removeFromCart(productId) {
     console.log("removing from cart")
@@ -76,6 +70,10 @@ function Cart() {
       <Header />
       <div className='cart-products-container' >
         <h2 className='cart-products-container-title'>Shopping Cart</h2>
+        <Link className="product-detail-back" to="/productspage">
+          <img src={arrowLeft} />
+          <span>&nbsp;Back to Product List</span>
+        </Link>
         {myCartArray}
       </div>
       <span className='cart-product-message-price'>Total: {totalCartPrice()}$

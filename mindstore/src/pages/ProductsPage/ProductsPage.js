@@ -41,7 +41,6 @@ function ProductsPage() {
   }, [link, productsPerPage])
 
   const productArray = products.map(product => {
-    //ONDE DAMOS SET AOS PRODUTOS?
     {/* o link para o product esta no componente product mesmo */ }
     return (
       <Product key={product.id} product={product} />
@@ -79,8 +78,8 @@ function ProductsPage() {
       <Header />
       <div className="products-page-container">
         <div className="products-page-search-sidebar">
-        <SearchBar handleSearch={handleSearch} />
-        <Sidebar className="sidebar" handleSort={handleSort} changeLink={changeLink} changeNrProducts={changeNrProducts} productsPerPage={productsPerPage} />
+          <SearchBar handleSearch={handleSearch} />
+          <Sidebar className="sidebar" handleSort={handleSort} changeLink={changeLink} changeNrProducts={changeNrProducts} productsPerPage={productsPerPage} />
         </div>
         <div className="products-grids-pagination">
           <div className='producstpage-container' >{productArray}</div>

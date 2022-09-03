@@ -33,7 +33,7 @@ function Profile() {
         <>
             <Header />
             <div className='profile-container'>
-                <h1 className='profile-title'>Your profile :) </h1>
+                <h1 className='profile-title'>Your profile :) (unfinished) </h1>
                 <img className='profile-picture' src={userData.image} />
                 <h2 className='profile-name'>{userData.firstName} {userData.lastName}</h2>
                 <h4 className='profile-name'>{userData.dateOfBirth}</h4>

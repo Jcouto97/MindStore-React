@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link, useNavigate } from "react-router-dom"
 import ShoppingCart from "../../assets/shopping-cart.png"
 import "./header.css"
 
 
 function Header() {
-    //para navegar, hooke
+    //para navegar, hook
     const navigate = useNavigate()
 
     const loginToken = localStorage.getItem('token');

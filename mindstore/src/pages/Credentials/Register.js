@@ -18,13 +18,6 @@ function Register() {
 
 
   async function handleSubmit(event) {
-    console.log(firstName.current.value)
-    console.log(lastName.current.value)
-    console.log(email.current.value)
-    console.log(password.current.value)
-    console.log(address.current.value)
-    console.log(dateOfBirth.current.value)
-    console.log(image.current.value)
 
     event.preventDefault()
 
