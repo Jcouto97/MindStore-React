@@ -82,7 +82,7 @@ function ProductDetails() {
                     <h1 className='product-detail-title'>{product.title}</h1>
                     <Rating className="product-detail-rating" productRating={productRating} />
                     <p>Stock: {product.stock} </p>
-                    <p className="product-detail-price">{product.price}</p>
+                    <p className="product-detail-price">{product.price}$</p>
                     <p className="product-detail-description">{product.description}</p>
                     <div className="product-detail-cart">
                         <QuantityButton productsToAdd={productsToAdd} stock={product.stock} handleAddToUserCart={handleAddToUserCart} />
