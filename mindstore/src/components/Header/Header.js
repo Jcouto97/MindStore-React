@@ -57,7 +57,7 @@ function Header() {
                                 Profile
                             </Link>
                             <Link to='/shoppingcart' className='header-anchor'>
-                                <img src={ShoppingCart} />
+                                <img src={ShoppingCart} alt='shopping cart' />
                             </Link>
                             <button className='sign-out' onClick={handleLogout}>
                                 Sign Out

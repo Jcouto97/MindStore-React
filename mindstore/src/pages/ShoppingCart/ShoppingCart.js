@@ -49,7 +49,7 @@ function Cart() {
       return pricesArray.reduce((curr, acc) => curr + acc);
     }
   }
- 
+
 
   async function removeFromCart(productId) {
     console.log("removing from cart")
@@ -74,12 +74,12 @@ function Cart() {
           <img src={arrowLeft} />
           <span>&nbsp;Back to Product List</span>
         </Link>
+        {myCartArray === false ? <p>Your shoppingcart is empty :) </p> : null}
         {myCartArray}
       </div>
       <span className='cart-product-message-price'>Total: {totalCartPrice()}$
         &nbsp;</span>
       <button className='credentials-button' >Checkout</button>
-      <Footer />
     </>
   )
 }

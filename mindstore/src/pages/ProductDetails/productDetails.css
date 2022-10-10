@@ -6,11 +6,16 @@
 }
 
 .product-detail-image {
-    width: 50%;
+    min-width: 600px;
+    max-width: 600px;
+    min-height: 635px;
+    max-height: 635px;
+    padding: 10px;
+    background-color: white;
 }
 
 .product-detail-content {
-    width: 50%;
+
 }
 
 .product-detail-back {
@@ -21,7 +26,7 @@
     font-weight: 500;
     font-size: 16px;
     color: rgba(0, 0, 0, 0.3);
-    margin: 160px 0 40px;
+    margin: 20px 0 10px;
     text-transform: uppercase;
 }
 
@@ -31,7 +36,7 @@
 }
 
 .product-detail-price {
-    margin-top: 80px;
+    margin-top: 20px;
     font-size: 36px;
     font-weight: 500;
     color: #d4937f;

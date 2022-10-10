@@ -5,13 +5,13 @@ import { Link, useLocation } from "react-router-dom"
 function Footer() {
     //para ver se footer absoluto (fica em baixo) ou nao, nas paginas sem scroll é absoluto
     const location = useLocation();
-    const[isFooterAbsolute, setIsFooterAbsolute] = useState(false)
+    const [isFooterAbsolute, setIsFooterAbsolute] = useState(false)
 
     //assim corre sempre que o footer é chamado
     useEffect(() => {
-        if(location.pathname === "/login" ||
-        location.pathname === "/register" ||
-        location.pathname === "/profile"){
+        if (location.pathname === "/login" ||
+            location.pathname === "/register" ||
+            location.pathname === "/profile") {
             setIsFooterAbsolute(true)
         }
     }, [])

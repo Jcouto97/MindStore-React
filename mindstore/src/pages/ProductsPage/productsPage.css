@@ -9,6 +9,12 @@
 
 .productspage-product {
   width: 100%;
+  cursor: pointer;
+}
+
+.productspage-product:hover {
+  opacity: 0.9;
+  transform: scale(0.98);
 }
 
 .products-page-container {

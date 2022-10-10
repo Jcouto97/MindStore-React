@@ -72,17 +72,17 @@ function ProductDetails() {
         <>
             <Header />
             <div className="product-detail-container">
-                <img className="product-detail-image" src={product.image} />
+                <img className="product-detail-image" src={product.image} alt='product pic'/>
                 <div className="product-detail-content">
                     <Link className="product-detail-back" to="/productspage">
-                        <img src={arrowLeft} />
+                        <img src={arrowLeft} alt='left arrow' />
                         <span>&nbsp;Back to Product List</span>
                     </Link>
                     <p className="product-detail-category">{(product.category)}</p>
                     <h1 className='product-detail-title'>{product.title}</h1>
                     <Rating className="product-detail-rating" productRating={productRating} />
-                    <p>Stock: {product.stock} </p>
                     <p className="product-detail-price">{product.price}$</p>
+                    <p>Stock: {product.stock} </p>
                     <p className="product-detail-description">{product.description}</p>
                     <div className="product-detail-cart">
                         <QuantityButton productsToAdd={productsToAdd} stock={product.stock} handleAddToUserCart={handleAddToUserCart} />

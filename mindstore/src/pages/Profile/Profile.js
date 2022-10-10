@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
+import './profile.css'
 
 function Profile() {
 
@@ -33,10 +34,10 @@ function Profile() {
         <>
             <Header />
             <div className='profile-container'>
-                <h1 className='profile-title'>Your profile :) (unfinished) </h1>
+                <h1 className='profile-title'>Your profile :)</h1>
                 <img className='profile-picture' src={userData.image} />
                 <h2 className='profile-name'>{userData.firstName} {userData.lastName}</h2>
-                <h4 className='profile-name'>{userData.dateOfBirth}</h4>
+                <h4 className='profile-date'>{userData.dateOfBirth}</h4>
                 <p className='profile-name'>{userData.address}</p>
                 <p className='profile-email'>{userData.email}</p>
 
