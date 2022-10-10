@@ -14,8 +14,10 @@
 
 .quantity-button-decrement {
   border: none;
+  cursor: pointer;
 }
 
 .quantity-button-increment {
   border: none;
+  cursor: pointer;
 }

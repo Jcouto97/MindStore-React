@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Header from "../../components/Header/Header"
-import Footer from "../../components/Footer/Footer"
 import Product from "../../components/Product/Product"
 import Sidebar from '../../components/Sidebar/Sidebar'
 import SearchBar from '../../components/SearchBar/SearchBar'
@@ -16,8 +15,6 @@ function ProductsPage() {
   const [numberOfPages, setNumberOfPages] = useState([])
 
   useEffect(() => {
-    /*     console.log(localStorage.getItem("token"));
-        console.log(localStorage.getItem("userId")); */
     async function fetchProducts() {
       const response = await fetch(`api/v1/users/products${link}${direction}&page=${page}&pagesize=${productsPerPage}`);
       const json = await response.json();
@@ -85,13 +82,12 @@ function ProductsPage() {
           <div className='producstpage-container' >{productArray}</div>
           <div className='products-pagination' >
             {/*  a cada butao tenho que por onclick para mudar a pagina */}
-            {numberOfPages.map((page, index) => <button key={index} onClick={() => {
+            {numberOfPages.map((page, index) => <button  className='pagination-button' key={index} onClick={() => {
               setPage(index + 1)
             }} > {index + 1} </button>)}
           </div>
         </div>
       </div>
-      <Footer />
     </>
   )
 }

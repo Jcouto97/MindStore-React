@@ -33,12 +33,17 @@
 .footer-contacts {
   background-color: #f3f1f2;
   padding: 5px;
-  border-radius: 10px;
   font-size: 18px;
   text-decoration: none;
+  border: 1px solid #d4937f;
+  color: rgb(83, 77, 77);
+}
+
+.footer-contacts:hover {
+  opacity: 0.9;
+  transform: scale(0.98);
 }
 
 .footer-logo {
   font-size: 18px;
 }
-

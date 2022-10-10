@@ -1,0 +1,29 @@
+.products-per-page {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.products-per-page-title {
+  font-size: 16px;
+  font-family: "Inria Serif";
+  border-bottom: 1px solid #b43008;
+}
+
+.quantity-button-perpage {
+  display: flex;
+  border: 2px solid #d4937f;
+  border-radius: 4px;
+  height: 30px;
+  background-color: transparent;
+  margin-right: 20px;
+  align-items: center;
+  color: #d4937f;
+  width: 60px;
+  justify-content: center;
+  justify-content: space-between;
+  font-size: 14px;
+  justify-content: center;
+}

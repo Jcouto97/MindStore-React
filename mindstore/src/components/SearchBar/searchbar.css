@@ -1,3 +1,19 @@
 .search {
-    background-color: aqua;
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+  padding: 8px;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  width: 90%;
+  font-size: 14px;
+  gap: 25px;
+  align-items: center;
+}
+
+.search-glass {
+  width: 16px;
+  height: 16px;
 }

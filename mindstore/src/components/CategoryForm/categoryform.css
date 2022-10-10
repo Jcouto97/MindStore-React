@@ -1,0 +1,56 @@
+.filter-container {
+    margin-top: 22px;
+  }
+  
+  .filter-title {
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    font-size: 14px;
+    font-family: "Inria Serif", serif;
+    justify-content: center;
+    width: 300px;
+    border: solid 1px #d4937f;
+    cursor: pointer;
+  }
+  
+  .filter-form {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .sort-input {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .sort-radio {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 50%;
+    width: 11px;
+    height: 11px;
+    border: 1px solid black;
+    margin-right: 15px;
+    position: relative;
+    top: 1px;
+    cursor: pointer;
+  }
+  
+  .sort-radio:checked {
+    background-color: black;
+  }
+  
+  .arrow {
+    width: 6px;
+  }
+  
