@@ -6,17 +6,19 @@ import CartProduct from '../../components/CartProduct/CartProduct'
 import ProductDetails from '../ProductDetails/ProductDetails'
 import arrowLeft from "../../assets/arrow-left.png"
 import { Link } from "react-router-dom"
+import './cart.css'
 
 function Cart() {
   const userId = localStorage.getItem('userId');
   const fetchedToken = localStorage.getItem('token');
   // const [cartProducts, setCartProducts] = useState([])
   const { cartProducts, setCartProducts } = useContext(CartContext);
+  const [cartPrice, setCartPrice] = useState(0);
 
   /*
-  fazer fetch ao endpoint que ve os produtos que estao no cart e outro para apagar produtos do cart?
+  fazer fetch ao endpoint que ve os produtos que estao no cart e outro para apagar produtos do cart
   guardar todos em um state array, dar display ao array
-  podemos ter um max de 10 artigos no cart, senao bloquear fetch e mostrar mensagem
+  podemos ter um max de 10 artigos no cart, senao bloquear fetch e mostrar mensagem, usar context
   */
 
 
@@ -31,9 +33,9 @@ function Cart() {
       const data = await response.json();
       setCartProducts(data);
     }
-
+    totalCartPrice()
     fetchAllCartProducts();
-  }, []);
+  }, [cartProducts, cartPrice]);
 
   console.log(cartProducts)
 
@@ -46,7 +48,10 @@ function Cart() {
   function totalCartPrice() {
     if (cartProducts.length !== 0) {
       const pricesArray = cartProducts.map(product => product.price);
-      return pricesArray.reduce((curr, acc) => curr + acc);
+      const cartPrice = pricesArray.reduce((curr, acc) => curr + acc);
+      setCartPrice(cartPrice)
+    } else {
+      setCartPrice(0)
     }
   }
 
@@ -74,12 +79,17 @@ function Cart() {
           <img src={arrowLeft} />
           <span>&nbsp;Back to Product List</span>
         </Link>
-        {myCartArray === false ? <p>Your shoppingcart is empty :) </p> : null}
         {myCartArray}
+        <div className='price-container'>
+          {!cartPrice ? <pc className='empty-message'>Cart is Empty</pc> :
+            <Link to='/checkout' className='header-anchor'>
+              <button className='credentials-button' >Checkout</button>
+            </Link>
+          }
+          <span className='cart-product-message-price'>Total: {cartPrice}$
+            &nbsp;</span>
+        </div>
       </div>
-      <span className='cart-product-message-price'>Total: {totalCartPrice()}$
-        &nbsp;</span>
-      <button className='credentials-button' >Checkout</button>
     </>
   )
 }

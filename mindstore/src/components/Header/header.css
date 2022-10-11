@@ -5,6 +5,7 @@
   right: 0; */
   padding: 10px 40px;
   background-color: white;
+  font-size: 17px;
 }
 
 .header-nav {
@@ -46,6 +47,11 @@
   background-color: transparent;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.sign-out:hover {
+  opacity: 0.9;
+  transform: scale(0.98);
 }
 
 /* nos links do header a animação */

@@ -1,0 +1,23 @@
+.cart-products-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.empty-message {
+  padding: 6px;
+  background-color: rgb(226, 220, 220);
+  border: 1px solid grey;
+  justify-content: flex-start;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  margin-left: 60px;
+  font-family: "Inria Serif";
+  font-size: 20px;
+}
+
+.price-container{
+    display: flex;
+    height: 80px;
+    align-items: center;
+}
