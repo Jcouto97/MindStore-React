@@ -91,7 +91,7 @@ function Register() {
           <p className={message === "Register successful!" ? "success-message" : "error-message"}> {message}</p>
           <p className="credentials-message">
             Already have an account?
-            <Link to="/Login" className="credentials-redirect"> Login here</Link>
+            <Link to="/login" className="credentials-redirect"> Login here</Link>
           </p>
         </div>
       </div>
