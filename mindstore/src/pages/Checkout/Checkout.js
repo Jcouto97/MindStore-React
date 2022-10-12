@@ -1,9 +1,13 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useContext } from 'react';
 import { Link } from "react-router-dom"
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import "./checkout.css";
 import arrowLeft from "../../assets/arrow-left.png"
+import mastercard from '../../assets/mastercard.png'
+import paypal from '../../assets/paypal.png'
+import santander from '../../assets/santander.png'
+import { CartContext } from '../../components/Contexts/CartContext' //USECONTEXT
 
 function Checkout() {
     const name = useRef("");
@@ -12,6 +16,9 @@ function Checkout() {
     const cvv = useRef("");
 
     const [rerender, setRerender] = useState(false);
+    const [isRadioOn, setIsRadioOn] = useState(false);
+    const [acceptButton, setAcceptButton] = useState(false);
+    const { cartProducts, setCartProducts } = useContext(CartContext);
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -33,17 +40,29 @@ function Checkout() {
         }
     }
 
+    const handleRadio = () => {
+        setIsRadioOn(true);
+    }
+
+    const handlePay = () => {
+        setAcceptButton(true);
+        if (isRadioOn) {
+            alert('Thank you for your payment. See you again soon! :)');
+            //reset ao cart context
+        }
+    }
+
+    console.log(isRadioOn)
     return (
         <>
             <Header />
-            <div className='product-detail_link'>
-                <Link to="/productspage" >
-                    <img src={arrowLeft} alt="" />
-                    <span>&nbsp; Back to Product List</span>
-                </Link>
-            </div>
             <div className="checkout-container">
                 <div className="checkout-card">
+                    <div className='payments'>
+                        <img src={mastercard} alt='mastercard' className='payment' />
+                        <img src={santander} alt='santander' className='payment' />
+                        <img src={paypal} alt='paypal' className='payment' />
+                    </div>
                     <div className="card-number">
                         <p className="card-number_title">Card Number</p>
                         <p className="card-number_input">{number.current.value}</p>
@@ -85,25 +104,29 @@ function Checkout() {
                             <span>Exp Date</span>
                             <input type="text" placeholder='07 / 2026' maxLength={9} ref={date} onChange={handleInputTyped} />
                         </label>
-
                         <label htmlFor="cvv">
                             <span>CVV</span>
                             <input type="text" placeholder='424' maxLength={3} ref={cvv} onChange={handleInputTyped} />
                         </label>
-                        <label>
-                            <input className='terms' type="radio" name="terms" value="terms" id="terms" required />
-                            I accept the terms of agreement
-                        </label>
                         <div className="button-div">
+                            <button onClick={handlePay} type='submit' className='btn button-accept'>Accept Payment</button>
                             <Link to="/shoppingcart">
                                 <button type='submit' className='btn button-cancel'>Cancel</button>
                             </Link>
-                            <button type='submit' className='btn button-accept'>Accept Payment</button>
                         </div>
                     </form>
-
-
+                    {(acceptButton && !isRadioOn) ? <p className='terms-message'>Please read and accept the terms of service before purchase</p> : <></>}
+                    <label className="terms">
+                        <input type="radio" required onChange={handleRadio} />
+                        <p>I read and accept the terms of agreement</p>
+                    </label>
                 </div>
+            </div>
+            <div className='product-detail_link'>
+                <Link to="/productspage" >
+                    <img src={arrowLeft} alt="" />
+                    <span>&nbsp; Back to Product List</span>
+                </Link>
             </div>
             <Footer />
         </>
