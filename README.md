@@ -32,10 +32,21 @@ Note: some colors aren't fully visible in the recorded videos. They are best see
 
 Part 1:
 
+https://user-images.githubusercontent.com/103672168/195441870-6295a6ec-0fbf-4fe0-a648-ddf9a6935e83.mp4
+
 Part 2:
+
+https://user-images.githubusercontent.com/103672168/195441889-770838ad-725d-44b3-a72d-d7545a7cb4a1.mp4
 
 Part 3:
 
+https://user-images.githubusercontent.com/103672168/195441979-77e89d6e-cdb0-4075-b653-b6951db56725.mp4
+
 Part 4:
 
+https://user-images.githubusercontent.com/103672168/195442046-296f9209-f2a0-40f4-9e7b-5c5350848f3c.mp4
+
 Part 5:
+
+https://user-images.githubusercontent.com/103672168/195442094-4983d191-1fa9-496e-b634-dfb9a4a64c85.mp4
+
