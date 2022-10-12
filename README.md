@@ -2,7 +2,7 @@
 
 **SUMMARY:**
 
-The frontend impplementation of MindShop e-commerce type  of store, made with React. Created with the purpose of giving its users the ability to search, add to cart and buy desired products, ranging from clothing to jewelry. Made use of login/register endpoints of the Java Springboot API (previously built) also with search filters to order (ascending/descending) products by rating, category and number of products per page. Also used fully functional pagination, aswell as other miscellaneous.
+Part of the fullstack MindStore project, more especifically the frontend implementation of the e-commerce type  of store, made with React. Created with the purpose of giving its users the ability to search, add to cart and buy desired products, ranging from clothing to jewelry. Made use of login/register endpoints of the Java Springboot API (previously built) also with search filters to order (ascending/descending) products by rating, category and number of products per page. Also used fully functional pagination, aswell as other miscellaneous.
 
 ---
 
