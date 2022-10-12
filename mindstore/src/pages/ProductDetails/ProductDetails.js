@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import { Link, useParams } from "react-router-dom"
@@ -6,11 +6,8 @@ import arrowLeft from "../../assets/arrow-left.png"
 import Rating from "../../components/Rating/Rating"
 import QuantityButton from "../../components/QuantityButton/QuantityButton"
 import "./productDetails.css"
-import { CartContext } from '../../components/Contexts/CartContext'
-
 
 function ProductDetails() {
-    const { cartProducts } = useContext(CartContext); //VARIAVEL DO CONTEXT PARA BLOQUEAR CASO QUEIRA ADICIONAR + PRODUCTS NO CART MAX 10
     const { id } = useParams();
     // o react vai procurar no router product:id no url e associa
 
@@ -21,7 +18,7 @@ function ProductDetails() {
 
     //state que vem do quantity button para ser usado no cart + tarde
     const [productsToAdd, setProductToAdd] = useState(1);
-    const [isCartFull, setIsCartFull] = useState(false);
+    const [isCartFull] = useState(false);
 
     useEffect(() => {
         /*  console.log(isCartFull
@@ -34,6 +31,7 @@ function ProductDetails() {
             setProductRating(json.rating);
         }
         fetchById();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     //products to add vem da component button quantity
@@ -44,10 +42,10 @@ function ProductDetails() {
 
     async function addToCart() {
         //variavel de context, caso esteja cheio
-        if (cartProducts.length >= 10) {
-            setIsCartFull(true);
-            return;
-        }
+        /*  if (cartProducts.length >= 10) {
+             setIsCartFull(true);
+             return;
+         } */
 
         const userId = localStorage.getItem("userId");
         const fetchedToken = localStorage.getItem("token");
@@ -72,7 +70,7 @@ function ProductDetails() {
         <>
             <Header />
             <div className="product-detail-container">
-                <img className="product-detail-image" src={product.image} alt='product pic'/>
+                <img className="product-detail-image" src={product.image} alt='product pic' />
                 <div className="product-detail-content">
                     <Link className="product-detail-back" to="/productspage">
                         <img src={arrowLeft} alt='left arrow' />
@@ -103,19 +101,3 @@ function ProductDetails() {
 }
 
 export default ProductDetails
-
-
-/* {
-    "id": 4,
-    "title": "High-waisted tailored trousers",
-    "price": 749.99,
-    "description": "A testimony to Valentino's impeccable tailoring, these trousers are all about sophistication. Crafted from virgin wool with a bit of stretch, the chocolate brown hue and pressed crease add a refined touch to the pair.",
-    "category": "men's clothing",
-    "image": "https://cdn-images.farfetch-contents.com/17/88/75/93/17887593_37953720_1000.jpg",
-    "stock": 16,
-    "rating": {
-        "id": 4,
-        "rate": 4.4,
-        "count": 5
-    }
-} */

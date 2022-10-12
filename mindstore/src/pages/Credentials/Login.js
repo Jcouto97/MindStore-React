@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState } from 'react'
 import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer"
 import { Link, useNavigate } from "react-router-dom"
@@ -22,9 +22,7 @@ function Login() {
   const password = useRef()
 
   async function handleSubmit(event) {
-    /*    console.log(email.current.value)
-       console.log(password.current.value)
-    */
+
     event.preventDefault();
 
     const request = {

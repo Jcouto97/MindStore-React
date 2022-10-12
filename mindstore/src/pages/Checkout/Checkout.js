@@ -1,5 +1,5 @@
 import React, { useRef, useState, useContext } from 'react';
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import "./checkout.css";
@@ -7,7 +7,7 @@ import arrowLeft from "../../assets/arrow-left.png"
 import mastercard from '../../assets/mastercard.png'
 import paypal from '../../assets/paypal.png'
 import santander from '../../assets/santander.png'
-import { CartContext } from '../../components/Contexts/CartContext' //USECONTEXT
+import { CartContext } from '../../Contexts/CartContext' //USECONTEXT
 
 function Checkout() {
     const name = useRef("");
@@ -19,6 +19,9 @@ function Checkout() {
     const [isRadioOn, setIsRadioOn] = useState(false);
     const [acceptButton, setAcceptButton] = useState(false);
     const { cartProducts, setCartProducts } = useContext(CartContext);
+    const fetchedToken = localStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
+    const navigate = useNavigate()
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -29,7 +32,6 @@ function Checkout() {
         setRerender(!rerender);
 
         console.log(number.current.value.length)
-        console.log(number)
 
         if (number.current.value.split(/[-\s]+/).join("").length === 4 || number.current.value.split(/[-\s]+/).join("").length === 8 || number.current.value.split(/[-\s]+/).join("").length === 12) {
             number.current.value += " - ";
@@ -44,15 +46,37 @@ function Checkout() {
         setIsRadioOn(true);
     }
 
+    async function removeFromCart(productId) {
+        console.log("removing from cart")
+        /* api/v1/users/removefromcart?userid=3&productid=40 */
+
+        const request = {
+            method: "PATCH",
+            headers: { "Content.Type": "application/JSON", "Authorization": fetchedToken },
+        }
+
+        await fetch(`api/v1/users/removefromcart?userid=${userId}&productid=${productId}`, request)
+    }
+
     const handlePay = () => {
         setAcceptButton(true);
         if (isRadioOn) {
             alert('Thank you for your payment. See you again soon! :)');
             //reset ao cart context
+            cartProducts.forEach(element => {
+                removeFromCart(element.id)
+            });
+            setCartProducts([]);
+            console.log(cartProducts)
+
+            setTimeout(() => {
+                navigate("/shoppingcart");
+
+            }, 1000);
         }
+
     }
 
-    console.log(isRadioOn)
     return (
         <>
             <Header />

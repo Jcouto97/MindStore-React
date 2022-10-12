@@ -1,6 +1,4 @@
-import React, { useState } from 'react'
 import "./quantityButton.css"
-
 
 /*
 recebe prop de stock, n pode por + que isso ou 10 no cart~

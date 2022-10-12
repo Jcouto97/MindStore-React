@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from "../../components/Header/Header"
 import Product from "../../components/Product/Product"
 import Sidebar from '../../components/Sidebar/Sidebar'
@@ -38,7 +38,6 @@ function ProductsPage() {
   }, [link, productsPerPage])
 
   const productArray = products.map(product => {
-    {/* o link para o product esta no componente product mesmo */ }
     return (
       <Product key={product.id} product={product} />
     )
@@ -82,7 +81,7 @@ function ProductsPage() {
           <div className='producstpage-container' >{productArray}</div>
           <div className='products-pagination' >
             {/*  a cada butao tenho que por onclick para mudar a pagina */}
-            {numberOfPages.map((page, index) => <button  className='pagination-button' key={index} onClick={() => {
+            {numberOfPages.map((page, index) => <button className='pagination-button' key={index} onClick={() => {
               setPage(index + 1)
             }} > {index + 1} </button>)}
           </div>

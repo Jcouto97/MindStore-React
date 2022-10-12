@@ -1,26 +1,19 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { CartContext } from '../../components/Contexts/CartContext' //USECONTEXT
-import Footer from '../../components/Footer/Footer'
+import { CartContext } from '../../Contexts/CartContext' //USECONTEXT
 import Header from '../../components/Header/Header'
 import CartProduct from '../../components/CartProduct/CartProduct'
-import ProductDetails from '../ProductDetails/ProductDetails'
 import arrowLeft from "../../assets/arrow-left.png"
+import emptyCart from "../../assets/empty-cart-image.png"
 import { Link } from "react-router-dom"
 import './cart.css'
+
+
 
 function Cart() {
   const userId = localStorage.getItem('userId');
   const fetchedToken = localStorage.getItem('token');
-  // const [cartProducts, setCartProducts] = useState([])
-  const { cartProducts, setCartProducts } = useContext(CartContext);
   const [cartPrice, setCartPrice] = useState(0);
-
-  /*
-  fazer fetch ao endpoint que ve os produtos que estao no cart e outro para apagar produtos do cart
-  guardar todos em um state array, dar display ao array
-  podemos ter um max de 10 artigos no cart, senao bloquear fetch e mostrar mensagem, usar context
-  */
-
+  const { cartProducts, setCartProducts } = useContext(CartContext); //VARIAVEL DO CONTEXT PARA BLOQUEAR CASO QUEIRA ADICIONAR + PRODUCTS NO CART MAX 10
 
   useEffect(() => {
     const request = {
@@ -32,10 +25,12 @@ function Cart() {
       const response = await fetch(`api/v1/users/shoppingcart/${userId}`, request)
       const data = await response.json();
       setCartProducts(data);
+      totalCartPrice(data);
     }
-    totalCartPrice()
+
     fetchAllCartProducts();
-  }, [cartProducts, cartPrice]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   console.log(cartProducts)
 
@@ -45,9 +40,9 @@ function Cart() {
     )
   })
 
-  function totalCartPrice() {
-    if (cartProducts.length !== 0) {
-      const pricesArray = cartProducts.map(product => product.price);
+  function totalCartPrice(data) {
+    if (data.length !== 0) {
+      const pricesArray = data.map(product => product.price);
       const cartPrice = pricesArray.reduce((curr, acc) => curr + acc);
       setCartPrice(cartPrice)
     } else {
@@ -68,6 +63,7 @@ function Cart() {
     const response = await fetch(`api/v1/users/removefromcart?userid=${userId}&productid=${productId}`, request)
     const data = await response.json();
     setCartProducts(data);
+    totalCartPrice(data);
   }
 
   return (
@@ -75,13 +71,14 @@ function Cart() {
       <Header />
       <div className='cart-products-container' >
         <h2 className='cart-products-container-title'>Shopping Cart</h2>
-        <Link className="product-detail-back" to="/productspage">
-          <img src={arrowLeft} />
-          <span>&nbsp;Back to Product List</span>
-        </Link>
         {myCartArray}
+        <p></p>
         <div className='price-container'>
-          {!cartPrice ? <pc className='empty-message'>Cart is Empty</pc> :
+          {!cartPrice ?
+            <>
+              <img src={emptyCart} alt='empty cart' className='empty-cart' />
+              <p className='empty-message'>Cart is Empty</p>
+            </> :
             <Link to='/checkout' className='header-anchor'>
               <button className='credentials-button' >Checkout</button>
             </Link>
@@ -89,6 +86,11 @@ function Cart() {
           <span className='cart-product-message-price'>Total: {cartPrice}$
             &nbsp;</span>
         </div>
+        <p></p>
+        <Link className="product-detail-back" to="/productspage">
+          <img src={arrowLeft} alt='arrow left' />
+          <span>&nbsp;Back to Product List</span>
+        </Link>
       </div>
     </>
   )

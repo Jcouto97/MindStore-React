@@ -16,8 +16,13 @@
   font-size: 20px;
 }
 
-.price-container{
-    display: flex;
-    height: 80px;
-    align-items: center;
+.price-container {
+  display: flex;
+  height: 80px;
+  align-items: center;
+}
+
+.empty-cart {
+  width: 100px;
+  height: 100px;
 }

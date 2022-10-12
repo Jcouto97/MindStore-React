@@ -1,4 +1,3 @@
-import React, { useRef, useState } from 'react'
 import CategoryForm from '../CategoryForm/CategoryForm';
 import RatingForm from '../RatingForm/RatingForm';
 import NrProductsButton from '../NrProductsButton/NrProductsButton';

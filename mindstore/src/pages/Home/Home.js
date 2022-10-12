@@ -43,7 +43,7 @@ function Home() {
                         View Products
                     </Link>
                 </div>
-                <img className="hero-image" src={heroImage} />
+                <img className="hero-image" src={heroImage} alt='hero pic' />
             </div>
             <div className='home-products'>
                 <div className="product-image-container">
@@ -57,7 +57,7 @@ function Home() {
                         View Products
                     </Link>
                 </div>
-                <img className='banner-image' src={bannerImg} />
+                <img className='banner-image' src={bannerImg} alt='banner pic' />
             </div>
 
             <Footer />

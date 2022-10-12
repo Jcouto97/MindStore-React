@@ -14,10 +14,10 @@ function Product(props) {
   return (
     <div className='productspage-product'>
       <div className="product-container" onClick={() => navigate(`/product/${product.id}`)}>
-        <img src={product.image} className="product-image" />
+        <img src={product.image} className="product-image" alt='product pic' />
         <div className="product-rating">
           <p>{Math.round((product.rating.rate) * 10) / 10}</p>
-          <img className='product-star' src={starFull} />
+          <img className='product-star' src={starFull} alt='star'/>
         </div>
         <div className="product-content">
           <p className="product-title">{product.title}</p>

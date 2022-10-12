@@ -9,7 +9,7 @@ import ShoppingCart from "./pages/ShoppingCart/ShoppingCart"
 import Profile from "./pages/Profile/Profile"
 import Checkout from './pages/Checkout/Checkout';
 import PageNotFound from "./pages/404/PageNotFound";
-import { CartContext } from "./components/Contexts/CartContext"
+import { CartContext } from "./Contexts/CartContext"
 import { useState } from 'react';
 
 function App() {
@@ -18,8 +18,8 @@ function App() {
 
   return (
     <div>
-      <CartContext.Provider value={{ cartProducts, setCartProducts }}>
-        <BrowserRouter>
+      <BrowserRouter>
+        <CartContext.Provider value={{ cartProducts, setCartProducts }}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="productspage" element={<ProductsPage />} />
@@ -32,8 +32,8 @@ function App() {
             <Route path="checkout" element={<Checkout />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
-        </BrowserRouter>
-      </CartContext.Provider>
+        </CartContext.Provider>
+      </BrowserRouter>
     </div>
   );
 }
