@@ -28,4 +28,14 @@ $ npm start
 
 **A SHORT VIDEO DEMONSTRATION:**
   <br/><br/>
-Note: some colors aren't fully visible in the recorded video. They are best seen when deploying the project or in the prints below :) 
+Note: some colors aren't fully visible in the recorded videos. They are best seen when deploying the project or in the prints directory above :) 
+
+Part 1:
+
+Part 2:
+
+Part 3:
+
+Part 4:
+
+Part 5:
