@@ -4,15 +4,6 @@ import Footer from "../../components/Footer/Footer"
 import { Link, useNavigate } from "react-router-dom"
 import "./credentials.css"
 
-/*
-fazer um form, que recebe email e password
-vou guarda-los em useRef
-fazer state para mensagem caso sucedido ou nao
-guardar o token em local storage para depois usar nos carrinhos de compras e sign out
-fazer pedido fetch post a api para logar com o token no authorization
-*/
-
-
 function Login() {
 
   const navigate = useNavigate()
